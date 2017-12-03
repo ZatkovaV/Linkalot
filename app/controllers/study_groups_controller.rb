@@ -7,9 +7,9 @@ class StudyGroupsController < ApplicationController
     @study_groups = StudyGroup.all
   end
 
-  # GET /study_groups/1
-  # GET /study_groups/1.json
+  # StudyGroup is composed from link entities
   def show
+    @links = LinksController.index
   end
 
   # GET /study_groups/new
