@@ -18,9 +18,9 @@
           <td><%= link.description %></td>
           <td><%= link.study_group_id %></td>
           <td><%= link.keywords %></td>
-          <td><%= link_to 'Show', link %></td>
-          <td><%= link_to 'Edit', edit_link_path(link) %></td>
-          <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', link, method: :delete %></td>
+          <td><%= render partial: 'votes/form', locals: {vote: @vote, vote_value: -1, link_id: link.id} %></td>
+          <td><%= render partial: 'votes/form',  locals: {vote: @vote, vote_value: -1, link_id: link.id} %></td>
         </tr>
     <% end %>
     </tbody>
