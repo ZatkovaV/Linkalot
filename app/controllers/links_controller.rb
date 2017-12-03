@@ -7,8 +7,8 @@ class LinksController < ApplicationController
     @links = Link.all
   end
 
-  def self.get_links(study_group_id)
-    @links = Link.where(:study_group_id => study_group_id)
+  def self.get_links(study_group_id, params)
+    @links = Link.where(:study_group_id => study_group_id).paginate(:page => params[:page], :per_page => 6)
   end
 
   # GET /links/1

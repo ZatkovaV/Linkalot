@@ -9,7 +9,7 @@ class StudyGroupsController < ApplicationController
 
   # StudyGroup is composed from link entities
   def show
-    @links = LinksController.get_links(@study_group.id)
+    @links = LinksController.get_links(@study_group.id, params)
     @vote = Vote.new
   end
 
