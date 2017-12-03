@@ -1,9 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
   <%= @study_group.name %>
 </p>
 
-<%= link_to 'Edit', edit_study_group_path(@study_group) %> |
+
+<p>
+  <table>
+    <tbody>
+    <% @links.each do |link| %>
+        <tr>
+          <td><%= link.title %></td>
+          <td><%= link.url %></td>
+          <td><%= link.description %></td>
+          <td><%= link.study_group_id %></td>
+          <td><%= link.keywords %></td>
+          <td><%= link_to 'Show', link %></td>
+          <td><%= link_to 'Edit', edit_link_path(link) %></td>
+          <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</p>
+
 <%= link_to 'Back', study_groups_path %>
