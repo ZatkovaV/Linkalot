@@ -4,6 +4,9 @@
   <%= @study_group.name %>
 </p>
 
+<p>
+  <%= link_to 'Add new link', new_link_path(:group_id => @study_group.id) %>
+</p>
 
 <p>
   <table>

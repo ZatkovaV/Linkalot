@@ -18,6 +18,7 @@ class LinksController < ApplicationController
 
   # GET /links/new
   def new
+    @study_group_id = params[:group_id]
     @link = Link.new
   end
 
