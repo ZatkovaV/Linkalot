@@ -3,8 +3,12 @@ class LinksController < ApplicationController
 
   # GET /links
   # GET /links.json
-  def self.index
+  def index
     @links = Link.all
+  end
+
+  def self.get_links(study_group_id)
+    @links = Link.where(:study_group_id => study_group_id)
   end
 
   # GET /links/1

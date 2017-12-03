@@ -9,7 +9,7 @@ class StudyGroupsController < ApplicationController
 
   # StudyGroup is composed from link entities
   def show
-    @links = LinksController.index
+    @links = LinksController.get_links(@study_group.id)
   end
 
   # GET /study_groups/new
