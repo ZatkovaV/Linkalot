@@ -18,6 +18,9 @@
             <div><%= link.description %></div>
             <div><%= link.study_group_id %></div>
             <div><%= link.keywords %></div>
+            <div><% thumb = LinkThumbnailer.generate(link.url) %>
+                 <img class="link_thumbnail" src="<%= thumb.images.first.src.to_s %>" />
+            </div>
             <div><%= link_to 'Destroy', link, method: :delete %></div>
             <div><%= render partial: 'votes/form', locals: {vote: @vote, vote_value: -1, link_id: link.id} %></div>
             <div><%= render partial: 'votes/form',  locals: {vote: @vote, vote_value: -1, link_id: link.id} %></div>
