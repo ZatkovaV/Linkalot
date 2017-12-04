@@ -28,8 +28,7 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-        format.json { render :show, status: :created, location: @vote }
+        format.html { redirect_to request.referer}
       else
         format.html { render :new }
         format.json { render json: @vote.errors, status: :unprocessable_entity }

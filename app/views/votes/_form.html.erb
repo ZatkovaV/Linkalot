@@ -11,22 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :value %>
-    <%= f.text_field :value %>
-  </div>
+    <%= f.hidden_field :value, value: vote_value %>
+    <%= f.hidden_field :link_id, value: link_id %>
+    <%= f.hidden_field :ip_address, value: request.remote_ip %>
 
-  <div class="field">
-    <%= f.label :link_id %>
-    <%= f.text_field :link_id %>
-  </div>
 
-  <div class="field">
-    <%= f.label :ip_address %>
-    <%= f.text_field :ip_address %>
-  </div>
+    <% if vote_value > 0 %>
+      <%= f.submit "Upvote", :type => :image, :src => image_path('Like.png'), :class => 'vote_img' %>
+    <% else %>
+      <%= f.submit "Downvote", :type => :image, :src => image_path('Disike.png'), :class => 'vote_img' %>
+    <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
+
+

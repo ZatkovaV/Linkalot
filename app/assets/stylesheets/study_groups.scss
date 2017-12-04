@@ -1,3 +1,79 @@
 // Place all the styles related to the StudyGroups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.add_new_box {
+  text-align: center;
+  margin-top: 60px;
+  height: 60px;
+  width: 200px;
+  font-size: 20px;
+}
+
+.links_box {
+  margin-top: 40px;
+}
+
+.links_rows {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.links_cols {
+  flex-grow: 1;
+  width: 33%;
+  height: 500px;
+}
+
+.link_header {
+  font-size: 18px;
+}
+
+.link_description {
+  width: 90%;
+  margin-top: 10px;
+}
+
+.vote_buttons {
+  display: flex;
+  align-items: flex-end;
+  width: 90%;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.vote_item {
+  display: flex;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.vote_img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+
+.thumb_box {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.image_link {
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
+}
+
+.link_thumbnail {
+  margin: 0 auto;
+  width: 90%;
+  height: 90%;
+}
+
+.votes_num {
+  margin-right: 10px;
+}

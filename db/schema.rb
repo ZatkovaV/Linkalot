@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203014753) do
+ActiveRecord::Schema.define(version: 20171203112515) do
 
   create_table "links", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
     t.string   "description"
-    t.integer  "studygroup_id"
+    t.integer  "study_group_id"
     t.string   "keywords"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "study_groups", force: :cascade do |t|

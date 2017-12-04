@@ -1,9 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
+<div class="header flex_col">
   <%= @study_group.name %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_study_group_path(@study_group) %> |
+
+<div class="flex_col">
+
+  <div class="flex_col add_new_box">
+    <%= link_to 'Add new link', new_link_path(:group_id => @study_group.id) %>
+  </div>
+
+  <div class="links_box">
+    <div class="links_rows">
+      <% @links.each do |link| %>
+          <div class="links_cols flex_col">
+
+            <div class="link_header"><a href="<%= link.url %>"><%= link.title %></a></div>
+
+            <% thumb = Grabbit.url(link.url) %>
+
+            <div class="thumb_box"><a class="image_link" href="<%= link.url %>">
+              <img src="<%= thumb.images.first %>" class="link_thumbnail" /></a>
+            </div>
+
+            <div class="link_description"><%= link.description %></div>
+
+            <!-- <div> link_to 'Destroy', link, method: :delete </div> -->
+            <div class="vote_buttons">
+              <div class="vote_item">
+                <div class="votes_num"><%= link.vote_sum %></div>
+                <%= render partial: 'votes/form', locals: {vote: @vote, vote_value: 1, link_id: link.id} %>
+                <%= render partial: 'votes/form',  locals: {vote: @vote, vote_value: -1, link_id: link.id} %>
+              </div>
+            </div>
+
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= will_paginate @links %>
+
+</div>
+
 <%= link_to 'Back', study_groups_path %>

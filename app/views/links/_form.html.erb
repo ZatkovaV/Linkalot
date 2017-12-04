@@ -26,10 +26,7 @@
     <%= f.text_field :description %>
   </div>
 
-  <div class="field">
-    <%= f.label :studygroup_id %>
-    <%= f.text_field :studygroup_id %>
-  </div>
+    <%= f.hidden_field :study_group_id , value: @study_group_id %>
 
   <div class="field">
     <%= f.label :keywords %>
