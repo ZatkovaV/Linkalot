@@ -1,33 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<p>
+<div class="header flex_col">
   <%= @study_group.name %>
-</p>
+</div>
 
-<p>
-  <%= link_to 'Add new link', new_link_path(:group_id => @study_group.id) %>
-</p>
 
-<p>
-  <table>
-    <tbody>
-    <% @links.each do |link| %>
-        <tr>
-          <td><%= link.title %></td>
-          <td><%= link.url %></td>
-          <td><%= link.description %></td>
-          <td><%= link.study_group_id %></td>
-          <td><%= link.keywords %></td>
-          <td><%= link_to 'Destroy', link, method: :delete %></td>
-          <td><%= render partial: 'votes/form', locals: {vote: @vote, vote_value: -1, link_id: link.id} %></td>
-          <td><%= render partial: 'votes/form',  locals: {vote: @vote, vote_value: -1, link_id: link.id} %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="flex_col">
 
-<%= will_paginate @links %>
+  <div class="flex_col add_new_box">
+    <%= link_to 'Add new link', new_link_path(:group_id => @study_group.id) %>
+  </div>
 
-</p>
+  <div class="links_box">
+    <div class="links_rows">
+      <% @links.each do |link| %>
+          <div class="links_cols flex_col">
+            <div><%= link.title %></div>
+            <div><%= link.url %></div>
+            <div><%= link.description %></div>
+            <div><%= link.study_group_id %></div>
+            <div><%= link.keywords %></div>
+            <div><%= link_to 'Destroy', link, method: :delete %></div>
+            <div><%= render partial: 'votes/form', locals: {vote: @vote, vote_value: -1, link_id: link.id} %></div>
+            <div><%= render partial: 'votes/form',  locals: {vote: @vote, vote_value: -1, link_id: link.id} %></div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= will_paginate @links %>
+
+</div>
 
 <%= link_to 'Back', study_groups_path %>
