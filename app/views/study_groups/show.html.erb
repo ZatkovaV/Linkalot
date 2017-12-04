@@ -13,17 +13,25 @@
     <div class="links_rows">
       <% @links.each do |link| %>
           <div class="links_cols flex_col">
-            <div><%= link.title %></div>
-            <div><%= link.url %></div>
-            <div><%= link.description %></div>
-            <div><%= link.study_group_id %></div>
-            <div><%= link.keywords %></div>
-            <div><% thumb = LinkThumbnailer.generate(link.url) %>
-                 <img class="link_thumbnail" src="<%= thumb.images.first.src.to_s %>" />
+
+            <div class="link_header"><a href="<%= link.url %>"><%= link.title %></a></div>
+
+            <% thumb = Grabbit.url(link.url) %>
+
+            <div class="thumb_box"><a class="image_link" href="<%= link.url %>">
+              <img src="<%= thumb.images.first %>" class="link_thumbnail" /></a>
             </div>
-            <div><%= link_to 'Destroy', link, method: :delete %></div>
-            <div><%= render partial: 'votes/form', locals: {vote: @vote, vote_value: -1, link_id: link.id} %></div>
-            <div><%= render partial: 'votes/form',  locals: {vote: @vote, vote_value: -1, link_id: link.id} %></div>
+
+            <div class="link_description"><%= link.description %></div>
+
+            <!-- <div> link_to 'Destroy', link, method: :delete </div> -->
+            <div class="vote_buttons">
+              <div class="vote_item">
+                <%= render partial: 'votes/form', locals: {vote: @vote, vote_value: 1, link_id: link.id} %>
+                <%= render partial: 'votes/form',  locals: {vote: @vote, vote_value: -1, link_id: link.id} %>
+              </div>
+            </div>
+
           </div>
       <% end %>
     </div>

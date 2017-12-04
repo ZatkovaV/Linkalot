@@ -15,9 +15,13 @@
     <%= f.hidden_field :link_id, value: link_id %>
     <%= f.hidden_field :ip_address, value: request.remote_ip %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+    <% if vote_value > 0 %>
+      <%= f.submit "Upvote", :type => :image, :src => image_path('Like.png'), :class => 'vote_img' %>
+    <% else %>
+      <%= f.submit "Downvote", :type => :image, :src => image_path('Disike.png'), :class => 'vote_img' %>
+    <% end %>
+
 <% end %>
 
 
