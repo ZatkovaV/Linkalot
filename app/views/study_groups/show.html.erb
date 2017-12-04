@@ -27,6 +27,7 @@
             <!-- <div> link_to 'Destroy', link, method: :delete </div> -->
             <div class="vote_buttons">
               <div class="vote_item">
+                <div class="votes_num"><%= link.vote_sum %></div>
                 <%= render partial: 'votes/form', locals: {vote: @vote, vote_value: 1, link_id: link.id} %>
                 <%= render partial: 'votes/form',  locals: {vote: @vote, vote_value: -1, link_id: link.id} %>
               </div>
