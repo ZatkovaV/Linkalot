@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203112515) do
+ActiveRecord::Schema.define(version: 20171218004654) do
 
   create_table "links", force: :cascade do |t|
     t.string   "title"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171203112515) do
   create_table "votes", force: :cascade do |t|
     t.integer  "value"
     t.integer  "link_id"
-    t.string   "ip_address"
+    t.string   "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
