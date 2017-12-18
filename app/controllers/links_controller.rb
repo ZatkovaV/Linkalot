@@ -3,6 +3,9 @@ class LinksController < ApplicationController
 
 
   # Display_all_links_within_study_group()
+
+  # fetches all links with counts of their votes within a selected study groups
+  # therefore it also implements Count_votes_of_link() method
   def self.get_links(study_group_id, params)
     @link = Link.select("links.id, links.title, links.url, links.description, COALESCE(SUM(votes.value), 0) as vote_sum")
                 .left_outer_joins(:votes)
@@ -11,7 +14,13 @@ class LinksController < ApplicationController
   end
 
 
-  # Init_new_link()
+  # search_links()
+  def search_links(query)
+    @link = Link.find_by(title: query)
+  end
+
+
+  # creates new link allowing user to input its attributes
   def new
     @study_group_id = params[:group_id]
     @link = Link.new
@@ -19,6 +28,7 @@ class LinksController < ApplicationController
 
 
   # Create_new_link()
+  # Creates and stores new link
   def create
     @link = Link.new(link_params)
 

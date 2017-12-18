@@ -1,29 +1,31 @@
 class StudyGroupsController < ApplicationController
   before_action :set_study_group, only: [:show, :edit, :update, :destroy]
 
-  # GET /study_groups
-  # GET /study_groups.json
+  # Find student's course groups()
+  # returns all groups that student that is logged inhas joined
   def index
     @study_groups = StudyGroup.all
   end
 
-  # StudyGroup is composed from link entities
+
+  # Display course group()
+  # displays selected course group and all links within
   def show
     @links = LinksController.get_links(@study_group.id, params)
     @vote = Vote.new
   end
 
-  # GET /study_groups/new
+
   def new
     @study_group = StudyGroup.new
   end
 
-  # GET /study_groups/1/edit
+
   def edit
   end
 
-  # POST /study_groups
-  # POST /study_groups.json
+  # Create a new group()
+  # creates new group
   def create
     @study_group = StudyGroup.new(study_group_params)
 
@@ -38,8 +40,7 @@ class StudyGroupsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /study_groups/1
-  # PATCH/PUT /study_groups/1.json
+
   def update
     respond_to do |format|
       if @study_group.update(study_group_params)
@@ -52,8 +53,8 @@ class StudyGroupsController < ApplicationController
     end
   end
 
-  # DELETE /study_groups/1
-  # DELETE /study_groups/1.json
+
+  # delete_group()
   def destroy
     @study_group.destroy
     respond_to do |format|
@@ -63,12 +64,10 @@ class StudyGroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_study_group
       @study_group = StudyGroup.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def study_group_params
       params.require(:study_group).permit(:name)
     end
